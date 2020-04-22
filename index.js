@@ -18,6 +18,8 @@ function processFirstItem(stringList, callback) {
   return callback(stringList[0])
 }
 
+console.log(processFirstItem(['foo', 'bar'], (str) => str + str))
+
 // ⭐️ Example Challenge END ⭐️
 
 
@@ -28,11 +30,16 @@ function processFirstItem(stringList, callback) {
  * 
  * 1. What is the difference between counter1 and counter2?
  * 
+ * In counter1 the variable count is declared inside of the function, making it function scope. In counter2 the variable is declared outside of the function, making it global scope. Also, in counter1 the function counterMaker() is assigned to the variable counter1.
+ * 
  * 2. Which of the two uses a closure? How can you tell?
+ * 
+ * Counter1 uses a closure because it has a function nested within the function. 
  * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
  *
-*/
+ * Counter1 would be preferable in a scenario where you wanted to pass data down from one function to a child function. 
+*/ 
 
 // counter1 code
 function counterMaker() {
@@ -58,12 +65,9 @@ Write a function called `inning` that generates a random number of points that a
 
 function inning(){
     /*Code Here*/
-  let score = []
   
-  score.push((Math.floor(Math.random() * 3)))
-  
-  return score
-
+  return (Math.floor(Math.random() * 3))
+    
 }
 console.log(inning())
 
@@ -81,35 +85,22 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(score, inning){
+function finalScore(score, innings){
   /*Code Here*/
-  console.log(inning, 'inning')
-  console.log(score, 'score')
+  
+  let homeTeamScore = 0;
+  let awayTeamScore = 0;
 
-  // let finalScore = score
+  for(let i = 0; i < innings; i++){
+    homeTeamScore = homeTeamScore + score();
+    awayTeamScore = awayTeamScore + score();
+  }
 
-  score.reduce(function(acc, score) {
-    console.log(`Home: ${acc}`)
-    return acc + score
-  }, 0)
-  // score.forEach(function(item, index) {
-  //   console.log(`Home: ${score[index]}`)
-  // })
-
-  // score.forEach(function(item, index) {
-  //   console.log(`Away: ${score[index]}`)
-  // })
-
-  // for(finalScore = 0; finalScore < 1; finalScore++) {
-  //   console.log(`Home: ${score}`)
-  // }
-
-  // for(finalScore = 0; finalScore < 1; finalScore++) {
-  //   console.log(`Away: ${score}`)
-  // }
+  return {'Home': homeTeamScore, 'Away': awayTeamScore}
+  
 }
 
-finalScore(inning(), 9)
+console.log(finalScore(inning, 9))
 
 /* Task 4: 
 
@@ -133,7 +124,7 @@ and returns the score at each pont in the game, like so:
 
 Final Score: awayTeam - homeTeam */
 
-function scoreboard(/* CODE HERE */) {
+function scoreboard(getInningScore, inning) {
   /* CODE HERE */
 }
 
