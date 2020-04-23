@@ -42,6 +42,9 @@ Find the file `index.js` and complete the tasks.
 Edit the `ReadMe` file with your answers.
 
 1. In your own words, define closure (1-2 sentences).
+
+A closure gives a function access to all data within its lexical environment. For example, if a function is nested within a function, then the child function has access to any variables declared in the parent function. 
+
 2. Study the following code, then answer the questions below.
 
 ```js
@@ -63,8 +66,16 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
+
+A closure is used in the nested function because it has access to the variables dansRoll and zoesRoll. 
+
 b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
+
+What is always the same is the name 'Dan' that is passed into the parent function, what can change is the value assigned to the newRoll variable. 
+
 c. What is the lexical scope of `newRoll`? 
+
+The lexical scope of newRoll is any variable or data that is within the lexical scope of the parent function personalDice.
 
 ### Task 3 - Stretch Goals
 

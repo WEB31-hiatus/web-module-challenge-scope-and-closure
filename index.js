@@ -30,15 +30,15 @@ console.log(processFirstItem(['foo', 'bar'], (str) => str + str))
  * 
  * 1. What is the difference between counter1 and counter2?
  * 
- * In counter1 the variable count is declared inside of the function, making it function scope. In counter2 the variable is declared outside of the function, making it global scope. Also, in counter1 the function counterMaker() is assigned to the variable counter1.
+ * In counter1 the variable count is declared inside of the function, making it function scope and can be accessed by the child function. In counter2 the variable is declared outside of the function, making it global scope.
  * 
  * 2. Which of the two uses a closure? How can you tell?
  * 
- * Counter1 uses a closure because it has a function nested within the function. 
+ * Counter1 uses a closure because the child function has access to the variable count which is declared in the parent function.
  * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
  *
- * Counter1 would be preferable in a scenario where you wanted to pass data down from one function to a child function. 
+ * Counter1 would be preferable in a scenario where you wanted to pass data down from one function to a child function, counter2 would be preferable when you want a variable to be accessable outside of the lexical scope of a given function.
 */ 
 
 // counter1 code
@@ -134,11 +134,11 @@ function scoreboard(scorePerInning, numberOfInnings) {
   for(let i = 0; i < numberOfInnings; i++){
     homeTeamScore = homeTeamScore + scorePerInning()
     awayTeamScore = awayTeamScore + scorePerInning()
-    console.log(`${innings[i]} inning: Home: ${homeTeamScore} - Away: ${awayTeamScore}`)
+    console.log((`${innings[i]} inning: Home: ${homeTeamScore} - Away: ${awayTeamScore}`))
   }
-
-  return `Final Score: Home: ${homeTeamScore} - Away: ${awayTeamScore}`
+  
+  console.log(`Final Score: Home: ${homeTeamScore} - Away: ${awayTeamScore}`)
 }
 
-console.log(scoreboard(inning, finalScore, 9))
+scoreboard(inning, 9)
 
